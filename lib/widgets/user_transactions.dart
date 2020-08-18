@@ -29,48 +29,48 @@ class _UserTransactionsState extends State<UserTransactions> {
       amount: 69.99,
       date: DateTime.now(),
     ),
-    Transaction(
-      id: 't4',
-      title: "Groceries 4",
-      amount: 16.53,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't5',
-      title: "New Shoes 5",
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't6',
-      title: "Groceries 6",
-      amount: 16.53,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't7',
-      title: "New Shoes 7",
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't8',
-      title: "Groceries 8",
-      amount: 16.53,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't9',
-      title: "New Shoes 9",
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't10',
-      title: "Groceries 10",
-      amount: 16.53,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't4',
+    //   title: "Groceries 4",
+    //   amount: 16.53,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't5',
+    //   title: "New Shoes 5",
+    //   amount: 69.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't6',
+    //   title: "Groceries 6",
+    //   amount: 16.53,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't7',
+    //   title: "New Shoes 7",
+    //   amount: 69.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't8',
+    //   title: "Groceries 8",
+    //   amount: 16.53,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't9',
+    //   title: "New Shoes 9",
+    //   amount: 69.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't10',
+    //   title: "Groceries 10",
+    //   amount: 16.53,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {
