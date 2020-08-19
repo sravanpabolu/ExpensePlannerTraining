@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
+import './widgets/chart.dart';
 import './models/transaction.dart';
 
 void main() {
@@ -59,55 +60,19 @@ class _MyHomePageState extends State<MyHomePage> {
     //   amount: 16.53,
     //   date: DateTime.now(),
     // ),
-    // Transaction(
-    //   id: 't3',
-    //   title: "New Shoes 3",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't4',
-    //   title: "Groceries 4",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't5',
-    //   title: "New Shoes 5",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't6',
-    //   title: "Groceries 6",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't7',
-    //   title: "New Shoes 7",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't8',
-    //   title: "Groceries 8",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't9',
-    //   title: "New Shoes 9",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't10',
-    //   title: "Groceries 10",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _userTransations.where(
+      (tx) {
+        return tx.date.isAfter(
+          DateTime.now().subtract(
+            Duration(days: 7),
+          ),
+        );
+      },
+    ).toList();
+  }
 
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
@@ -155,12 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               child: Card(
                 color: Colors.blue,
-                child: Container(
-                  child: Text(
-                    "Chart!",
-                    // textAlign: TextAlign.center,
-                  ),
-                ),
+                child: Chart(_recentTransactions),
                 elevation: 5,
               ),
             ),
