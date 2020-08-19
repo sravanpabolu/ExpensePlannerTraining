@@ -19,7 +19,7 @@ class TransactionList extends StatelessWidget {
               children: [
                 Text(
                   "No transactions",
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 //For empty space
                 SizedBox(
@@ -66,7 +66,7 @@ class TransactionList extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             transactions[index].title,
-                            style: Theme.of(context).textTheme.title,
+                            style: Theme.of(context).textTheme.headline6,
                           ),
                           Text(
                             DateFormat('dd-MMM-yyyy')
