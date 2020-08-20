@@ -100,6 +100,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  //step1 - to pass pointer
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransations.removeWhere((element) => element.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 elevation: 5,
               ),
             ),
-            TransactionList(_userTransations),
+            TransactionList(_userTransations, _deleteTransaction), //step 2 - to pass pointer
           ],
         ),
       ),

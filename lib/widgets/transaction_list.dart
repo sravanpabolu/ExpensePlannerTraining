@@ -6,9 +6,9 @@ import '../models/transaction.dart';
 class TransactionList extends StatelessWidget {
   //Declare a transactions parameter, for passing the transactions.
   final List<Transaction> transactions;
-
+  final Function deleteTx; //step3 - to pass pointer - add function
   //A constructor too
-  TransactionList(this.transactions);
+  TransactionList(this.transactions, this.deleteTx); //step 4 - to pass pointer - change constructor
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +62,11 @@ class TransactionList extends StatelessWidget {
                     subtitle: Text(
                       DateFormat.yMMMd().format(transactions[index].date),
                       // style: Theme.of(context).textTheme.headline6,
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
+                      onPressed: () => deleteTx(transactions[index].id), //step 5: to pass pointer - use it
                     ),
                   ),
                 );
