@@ -13,7 +13,7 @@ class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  void submitData() {
+  void _submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
@@ -30,6 +30,15 @@ class _NewTransactionState extends State<NewTransaction> {
     Navigator.of(context).pop();
   }
 
+  void _presentDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2018),
+      lastDate: DateTime.now(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -42,7 +51,7 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
               controller: titleController,
-              onSubmitted: (_) => submitData,
+              onSubmitted: (_) => _submitData,
 
               // onChanged: (value) {
               //   titleInput = value;
@@ -53,15 +62,16 @@ class _NewTransactionState extends State<NewTransaction> {
               decoration: InputDecoration(labelText: 'Amount'),
               // onChanged: (value) => amountInput = value,
               keyboardType: TextInputType.number,
-              onSubmitted: (_) => submitData,
+              onSubmitted: (_) => _submitData,
             ),
-            Container(//for adding height
+            Container(
+              //for adding height
               height: 70,
               child: Row(
                 children: <Widget>[
                   Text('Select Date'),
                   IconButton(
-                    onPressed: () {}, 
+                    onPressed: _presentDatePicker,
                     icon: Icon(Icons.calendar_today),
                   ),
                 ],
@@ -71,7 +81,7 @@ class _NewTransactionState extends State<NewTransaction> {
               child: Text('Add Transaction'),
               textColor: Theme.of(context).textTheme.button.color,
               color: Theme.of(context).primaryColor,
-              onPressed: submitData,
+              onPressed: _submitData,
             )
           ],
         ),
