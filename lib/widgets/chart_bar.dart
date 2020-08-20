@@ -11,7 +11,10 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text('\$${spendingAmount.toStringAsFixed(0)}'),
+        //Using Fittedbox will shrink the label and doesn't change other elements' size
+        FittedBox(
+          child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
+        ),
         SizedBox(
           height: 4,
         ),
