@@ -54,66 +54,66 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransations = [
-    // Transaction(
-    //   id: 't1',
-    //   title: "New Shoes 1",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: "Groceries 2",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't3',
-    //   title: "New Shoes 3",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't4',
-    //   title: "Groceries 4",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't5',
-    //   title: "New Shoes 5",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't6',
-    //   title: "Groceries 6",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't7',
-    //   title: "New Shoes 7",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't8',
-    //   title: "Groceries 8",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't9',
-    //   title: "New Shoes 9",
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't10',
-    //   title: "Groceries 10",
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: 't1',
+      title: "New Shoes 1",
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: "Groceries 2",
+      amount: 16.53,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't3',
+      title: "New Shoes 3",
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't4',
+      title: "Groceries 4",
+      amount: 16.53,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't5',
+      title: "New Shoes 5",
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't6',
+      title: "Groceries 6",
+      amount: 16.53,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't7',
+      title: "New Shoes 7",
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't8',
+      title: "Groceries 8",
+      amount: 16.53,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't9',
+      title: "New Shoes 9",
+      amount: 69.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't10',
+      title: "Groceries 10",
+      amount: 16.53,
+      date: DateTime.now(),
+    ),
   ];
 
   List<Transaction> get _recentTransactions {
