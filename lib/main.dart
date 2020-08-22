@@ -164,8 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final isLandscape =
-        mediaQuery.orientation == Orientation.landscape;
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
     final appBarObj = AppBar(
       title: Text(
         "Personal Expenses",
@@ -190,14 +189,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: appBarObj,
       body: SingleChildScrollView(
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             if (isLandscape)
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text("Show Chart"),
-                  Switch(
+                  Switch.adaptive(
+                      activeColor: Theme.of(context).accentColor, //for not using default green color for switch
                       value: _showChart,
                       onChanged: (val) {
                         setState(() {
