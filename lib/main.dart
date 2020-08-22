@@ -156,16 +156,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final appBarObj = AppBar(
-        title: Text(
-          "Personal Expenses",
+      title: Text(
+        "Personal Expenses",
+      ),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () => _startAddNewTransaction(context),
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => _startAddNewTransaction(context),
-          ),
-        ],
-      );
+      ],
+    );
     return Scaffold(
       appBar: appBarObj,
       body: SingleChildScrollView(
@@ -175,21 +175,18 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Container(
               // width: double.infinity,
-              height: (MediaQuery.of(context).size.height - 
-                        appBarObj.preferredSize.height - 
-                        MediaQuery.of(context).padding.top
-                        ) * 0.4,
-              child: Card(
-                color: Colors.blue,
-                child: Chart(_recentTransactions),
-                elevation: 5,
-              ),
+              height: (MediaQuery.of(context).size.height -
+                      appBarObj.preferredSize.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.3,
+              child: Chart(_recentTransactions),
             ),
             Container(
-              height: (MediaQuery.of(context).size.height - appBarObj.preferredSize.height - 
-                        MediaQuery.of(context).padding.top) * 0.6,
-              child: TransactionList(_userTransations,
-                  _deleteTransaction),
+              height: (MediaQuery.of(context).size.height -
+                      appBarObj.preferredSize.height -
+                      MediaQuery.of(context).padding.top) *
+                  0.7,
+              child: TransactionList(_userTransations, _deleteTransaction),
             ), //step 2 - to pass pointer
           ],
         ),
