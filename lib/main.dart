@@ -173,10 +173,10 @@ class _MyHomePageState extends State<MyHomePage> {
             middle: Text(
               "Personal Expenses",
             ),
-            trailing: Row( 
-              //we need to use this because, row in trailing has large size and 
+            trailing: Row(
+              //we need to use this because, row in trailing has large size and
               //to fix this, we need to shrink the row, as big as its children
-              mainAxisSize: MainAxisSize.min, 
+              mainAxisSize: MainAxisSize.min,
               children: [
                 GestureDetector(
                   child: Icon(CupertinoIcons.add),
@@ -210,48 +210,52 @@ class _MyHomePageState extends State<MyHomePage> {
           _userTransations, _deleteTransaction), //step 2 - to pass pointer
     );
 
-    final pageBody = SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          if (isLandscape)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Show Chart"),
-                Switch.adaptive(
-                    activeColor: Theme.of(context)
-                        .accentColor, //for not using default green color for switch
-                    value: _showChart,
-                    onChanged: (val) {
-                      setState(() {
-                        _showChart = val;
-                      });
-                    }),
-              ],
-            ),
-          if (!isLandscape)
-            Container(
-              // width: double.infinity,
-              height: (mediaQuery.size.height -
-                      appBarObj.preferredSize.height -
-                      mediaQuery.padding.top) *
-                  0.3,
-              child: Chart(_recentTransactions),
-            ),
-          if (!isLandscape) txListWidget,
-          if (isLandscape)
-            _showChart
-                ? Container(
-                    // width: double.infinity,
-                    height: (mediaQuery.size.height -
-                            appBarObj.preferredSize.height -
-                            mediaQuery.padding.top) *
-                        0.7,
-                    child: Chart(_recentTransactions),
-                  )
-                : txListWidget
-        ],
+  //use safearea to make sure the reserved spaces are used wisely, like navigation bar.
+  //using the SafeArea widget will use the boundaries properly.
+    final pageBody = SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            if (isLandscape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Show Chart"),
+                  Switch.adaptive(
+                      activeColor: Theme.of(context)
+                          .accentColor, //for not using default green color for switch
+                      value: _showChart,
+                      onChanged: (val) {
+                        setState(() {
+                          _showChart = val;
+                        });
+                      }),
+                ],
+              ),
+            if (!isLandscape)
+              Container(
+                // width: double.infinity,
+                height: (mediaQuery.size.height -
+                        appBarObj.preferredSize.height -
+                        mediaQuery.padding.top) *
+                    0.3,
+                child: Chart(_recentTransactions),
+              ),
+            if (!isLandscape) txListWidget,
+            if (isLandscape)
+              _showChart
+                  ? Container(
+                      // width: double.infinity,
+                      height: (mediaQuery.size.height -
+                              appBarObj.preferredSize.height -
+                              mediaQuery.padding.top) *
+                          0.7,
+                      child: Chart(_recentTransactions),
+                    )
+                  : txListWidget
+          ],
+        ),
       ),
     );
 
