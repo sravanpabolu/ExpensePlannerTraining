@@ -210,8 +210,8 @@ class _MyHomePageState extends State<MyHomePage> {
           _userTransations, _deleteTransaction), //step 2 - to pass pointer
     );
 
-  //use safearea to make sure the reserved spaces are used wisely, like navigation bar.
-  //using the SafeArea widget will use the boundaries properly.
+    //use safearea to make sure the reserved spaces are used wisely, like navigation bar.
+    //using the SafeArea widget will use the boundaries properly.
     final pageBody = SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -221,8 +221,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("Show Chart",
-                  style: Theme.of(context).textTheme.headline6,),
+                  Text(
+                    "Show Chart",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                   Switch.adaptive(
                       activeColor: Theme.of(context)
                           .accentColor, //for not using default green color for switch
