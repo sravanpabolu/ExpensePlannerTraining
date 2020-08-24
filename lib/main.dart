@@ -162,6 +162,55 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  List<Widget> _buildLandscapeContent(
+      MediaQueryData mediaQuery, AppBar appBarObj, Widget txListWidget) {
+    return [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            "Show Chart",
+            style: Theme.of(context).textTheme.headline6,
+          ),
+          Switch.adaptive(
+              activeColor: Theme.of(context)
+                  .accentColor, //for not using default green color for switch
+              value: _showChart,
+              onChanged: (val) {
+                setState(() {
+                  _showChart = val;
+                });
+              }),
+        ],
+      ),
+      _showChart
+          ? Container(
+              // width: double.infinity,
+              height: (mediaQuery.size.height -
+                      appBarObj.preferredSize.height -
+                      mediaQuery.padding.top) *
+                  0.7,
+              child: Chart(_recentTransactions),
+            )
+          : txListWidget
+    ];
+  }
+
+  List<Widget> _buildPortraitContent(
+      MediaQueryData mediaQuery, AppBar appBarObj, Widget txListWidget) {
+    return [
+      Container(
+        // width: double.infinity,
+        height: (mediaQuery.size.height -
+                appBarObj.preferredSize.height -
+                mediaQuery.padding.top) *
+            0.3,
+        child: Chart(_recentTransactions),
+      ),
+      txListWidget
+    ];
+  }
+
   bool _showChart = false;
 
   @override
@@ -218,45 +267,21 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             if (isLandscape)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "Show Chart",
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                  Switch.adaptive(
-                      activeColor: Theme.of(context)
-                          .accentColor, //for not using default green color for switch
-                      value: _showChart,
-                      onChanged: (val) {
-                        setState(() {
-                          _showChart = val;
-                        });
-                      }),
-                ],
+              ..._buildLandscapeContent(
+                mediaQuery,
+                appBarObj,
+                txListWidget,
               ),
             if (!isLandscape)
-              Container(
-                // width: double.infinity,
-                height: (mediaQuery.size.height -
-                        appBarObj.preferredSize.height -
-                        mediaQuery.padding.top) *
-                    0.3,
-                child: Chart(_recentTransactions),
+              //adding spread operator (...) will tell that
+              //pull all elements of the list and merge
+              //with other list as single list.
+              //like flattening the list.
+              ..._buildPortraitContent(
+                mediaQuery,
+                appBarObj,
+                txListWidget,
               ),
-            if (!isLandscape) txListWidget,
-            if (isLandscape)
-              _showChart
-                  ? Container(
-                      // width: double.infinity,
-                      height: (mediaQuery.size.height -
-                              appBarObj.preferredSize.height -
-                              mediaQuery.padding.top) *
-                          0.7,
-                      child: Chart(_recentTransactions),
-                    )
-                  : txListWidget
           ],
         ),
       ),
